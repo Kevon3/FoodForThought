@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34511.84
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FoodForThoughtWeb", "FoodForThoughtWeb\FoodForThoughtWeb.csproj", "{DF708CA4-C4D1-450A-9548-D6848F8ACC8B}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "FoodForThoughtDB", "FoodForThoughtDB\FoodForThoughtDB.sqlproj", "{795C18B0-F130-45D3-8F01-5355E9B0F91E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DF708CA4-C4D1-450A-9548-D6848F8ACC8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF708CA4-C4D1-450A-9548-D6848F8ACC8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF708CA4-C4D1-450A-9548-D6848F8ACC8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF708CA4-C4D1-450A-9548-D6848F8ACC8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{795C18B0-F130-45D3-8F01-5355E9B0F91E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{795C18B0-F130-45D3-8F01-5355E9B0F91E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{795C18B0-F130-45D3-8F01-5355E9B0F91E}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{795C18B0-F130-45D3-8F01-5355E9B0F91E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{795C18B0-F130-45D3-8F01-5355E9B0F91E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{795C18B0-F130-45D3-8F01-5355E9B0F91E}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9EDFF80D-C268-402A-A9F3-67F553237543}
+	EndGlobalSection
+EndGlobal
