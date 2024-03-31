@@ -13,7 +13,7 @@ namespace FoodForThoughtWeb.Pages.Account
         {
             
         }
-        public void OnPost() {
+        public ActionResult OnPost() {
             if (ModelState.IsValid)
             {
                 string connString = "Server=(local)\\MASQLocalDB;Database=FoodForThought; Trusted_Connection = true;";
@@ -29,7 +29,12 @@ namespace FoodForThoughtWeb.Pages.Account
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
+                return RedirectToPage("Login");
 			}
+            else
+            {
+                return Page();
+            }
         }
     }
 }
