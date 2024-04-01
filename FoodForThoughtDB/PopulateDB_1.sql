@@ -27,4 +27,6 @@ INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (8, N'Wheat')
 GO
 INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (9, N'Sesame')
 GO
+INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (10, N'None')
+GO
 

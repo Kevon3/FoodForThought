@@ -27,6 +27,8 @@ INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (8, N'Wheat')
 GO
 INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (9, N'Sesame')
 GO
+INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (10, N'None')
+GO
 INSERT [dbo].[Cuisine] ([CuisineId], [Cuisine]) VALUES (1, N'American')
 GO
 INSERT [dbo].[Cuisine] ([CuisineId], [Cuisine]) VALUES (2, N'Chinese')
