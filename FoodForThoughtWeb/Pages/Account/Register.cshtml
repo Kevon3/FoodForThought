@@ -3,6 +3,15 @@
 @{
 }
 <form method = "post">
+
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="NewPerson.Username" class="form-label">Username</label>
+		</div>
+		<div class="col-10">
+			<input type="text" class="form-control" />
+		</div>
+	</div>
 	<div class = "row m-2">
 		<div class="col-2">
 			<label asp-for = "NewPerson.FirstName" class="form-label">First Name</label>
