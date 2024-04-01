@@ -18,7 +18,7 @@ namespace FoodForThoughtWeb.Pages.Account
             {
                 string connString = "Server=(local)\\MASQLocalDB;Database=FoodForThought; Trusted_Connection = true;";
                 SqlConnection conn = new SqlConnection(connString);
-                string cmdText = "INSERT INTO PERSON(FirstName, LastName, Email,Username, Password)" + " VALUES(@firstName, @lastName, @email, @password,@username)";
+                string cmdText = "INSERT INTO USER(FirstName, LastName, Email,Username, Password)" + " VALUES(@firstName, @lastName, @email, @password,@username)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@firstName", NewPerson.FirstName);
                 cmd.Parameters.AddWithValue("@lastName", NewPerson.LastName);
