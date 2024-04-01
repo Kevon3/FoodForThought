@@ -14,11 +14,11 @@ namespace FoodForThoughtWeb.Pages.Account
             
         }
         public ActionResult OnPost() {
-            if (ModelState.IsValid)
+                if (ModelState.IsValid)
             {
-                string connString = "Server=(local)\\MASQLocalDB;Database=FoodForThought; Trusted_Connection = true;";
+                string connString = "Server=(localdb)\\MASQLocalDB;Database=FoodForThought; Trusted_Connection = true;";
                 SqlConnection conn = new SqlConnection(connString);
-                string cmdText = "INSERT INTO PERSON(FirstName, LastName, Email,Username, Password)" + " VALUES(@firstName, @lastName, @email, @password,@username)";
+                string cmdText = "INSERT INTO Person(FirstName, LastName, Email,Username, Password)" + " VALUES(@firstName, @lastName, @email, @password,@username)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@firstName", NewPerson.FirstName);
                 cmd.Parameters.AddWithValue("@lastName", NewPerson.LastName);
@@ -32,7 +32,10 @@ namespace FoodForThoughtWeb.Pages.Account
 
                 return RedirectToPage("Login");
 			}
-            else
+				// Return the page with validation errors
+				return Page();
+			}
+			else
             {
                 return Page();
             }

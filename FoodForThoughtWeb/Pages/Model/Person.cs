@@ -4,6 +4,7 @@ namespace FoodForThoughtWeb.Pages.Model
 {
 	public class Person
 	{
+		[Required]
 		public int UserID { get; set; }
 		[Required]
 		public string FirstName {  get; set; }
@@ -15,7 +16,7 @@ namespace FoodForThoughtWeb.Pages.Model
 		public string Password {  get; set; }
 		[Required]
 		public string Username {  get; set; }
-		[Required]
+		//[Required]
 		public int AllergyID { get; set; }
 		//public int UserId {  get; set; }
 	}
