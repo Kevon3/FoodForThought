@@ -1,3 +1,4 @@
+using FoodForThoughtBusiness;
 using FoodForThoughtWeb.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -26,7 +27,7 @@ namespace FoodForThoughtWeb.Pages.Account
                 cmd.Parameters.AddWithValue("@lastName", NewPerson.LastName);
                 cmd.Parameters.AddWithValue("@email", NewPerson.Email);
                 cmd.Parameters.AddWithValue("@username", NewPerson.Username);
-                cmd.Parameters.AddWithValue("@password", NewPerson.Password);
+                cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(NewPerson.Password));
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
