@@ -11,5 +11,10 @@ namespace FoodForThoughtBusiness
 		{
 				return BCrypt.Net.BCrypt.EnhancedVerify(password, passwordHash);
 		}
+		public static string GetDBConnectionString()
+		{
+			string connString = "Server =(localdb)\\MSSQLLocalDB;Database=FoodForThought;Trusted_Connection = true;";
+			return connString;
+		}
 	}
 }

@@ -18,20 +18,19 @@ namespace FoodForThoughtWeb.Pages.Account
         {
             if (ModelState.IsValid)
             {
-                string connString = "Server=(localdb)\\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
-                SqlConnection conn = new SqlConnection(connString);
-                string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@firstName, @lastName, @email, @password,@username)";
+                //string connString = "Server=(localdb)\\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
+                SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
+                string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@username, @firstName, @lastName, @email, @password)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@username", NewPerson.Username);
                 cmd.Parameters.AddWithValue("@firstName", NewPerson.FirstName);
                 cmd.Parameters.AddWithValue("@lastName", NewPerson.LastName);
                 cmd.Parameters.AddWithValue("@email", NewPerson.Email);
-                cmd.Parameters.AddWithValue("@username", NewPerson.Username);
                 cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(NewPerson.Password));
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
-                conn.Close();
+            
 
                 return RedirectToPage("Login");
             }

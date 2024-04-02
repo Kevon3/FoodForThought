@@ -5,13 +5,13 @@
 <form method = "post">
 
 	<div class="row m-2">
-		<div class="row m-2" asp-validation-summary="All"></div>
+		<div class="row m-2 text-danger" asp-validation-summary="All"></div>
 		<div class="col-2">
 			<label asp-for="NewPerson.Username" class="form-label">Username</label>
 		</div>
 		<div class="col-10">
 			<input type="text" class="form-control" asp-for ="NewPerson.Username"/>
-			<span asp-validation-for= "NewPerson.Username"></span>
+			<span class = "text-danger" asp-validation-for= "NewPerson.Username"></span>
 		</div>
 	</div>
 	<div class = "row m-2">
@@ -21,7 +21,7 @@
 		</div>
 		<div class="col-10">
 			<input type = "text" class="form-control" asp-for =" NewPerson.FirstName"/>
-			<span asp-validation-for="NewPerson.FirstName"></span>
+			<span class=" text-danger" asp-validation-for="NewPerson.FirstName"></span>
 		</div>
 	</div>
 	<div class="row m-2">
@@ -30,7 +30,7 @@
 		</div>
 		<div class="col-10">
 			<input type="text" class="form-control" asp-for ="NewPerson.LastName"/>
-			<span asp-validation-for="NewPerson.LastName"></span>
+			<span class=" text-danger" asp-validation-for="NewPerson.LastName"></span>
 		</div>
 	</div>
 	<div class="row m-2">
@@ -39,7 +39,7 @@
 		</div>
 		<div class="col-10">
 			<input type="text" class="form-control" asp-for =" NewPerson.Email" />
-			<span asp-validation-for="NewPerson.Email"></span>
+			<span class=" text-danger" asp-validation-for="NewPerson.Email"></span>
 		</div>
 	</div>
 	<div class="row m-2">
@@ -48,7 +48,7 @@
 		</div>
 		<div class="col-10">
 			<input type="text" class="form-control" asp-for =" NewPerson.Password" />
-			<span asp-validation-for="NewPerson.Password"></span>
+			<span class=" text-danger" asp-validation-for="NewPerson.Password"></span>
 		</div>
 	</div>
 	<div class="row m-2">
