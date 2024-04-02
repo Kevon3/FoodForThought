@@ -11,34 +11,38 @@ namespace FoodForThoughtWeb.Pages.Account
         public Person NewPerson { get; set; }
         public void OnGet()
         {
-            
+
         }
-        public ActionResult OnPost() {
-                if (ModelState.IsValid)
+        public IActionResult OnPost()
+        {
+            if (ModelState.IsValid)
             {
-                string connString = "Server=(localdb)\\MASQLocalDB;Database=FoodForThought; Trusted_Connection = true;";
+                string connString = "Server=(localdb)\\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
                 SqlConnection conn = new SqlConnection(connString);
-                string cmdText = "INSERT INTO Person(FirstName, LastName, Email,Username, Password)" + " VALUES(@firstName, @lastName, @email, @password,@username)";
+                string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@firstName, @lastName, @email, @password,@username)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@username", NewPerson.Username);
                 cmd.Parameters.AddWithValue("@firstName", NewPerson.FirstName);
                 cmd.Parameters.AddWithValue("@lastName", NewPerson.LastName);
-				cmd.Parameters.AddWithValue("@email", NewPerson.Email);
+                cmd.Parameters.AddWithValue("@email", NewPerson.Email);
                 cmd.Parameters.AddWithValue("@username", NewPerson.Username);
-				cmd.Parameters.AddWithValue("@password", NewPerson.Password);
+                cmd.Parameters.AddWithValue("@password", NewPerson.Password);
 
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
 
                 return RedirectToPage("Login");
-			}
-				// Return the page with validation errors
-				return Page();
-			}
-			else
+            }
+            else
             {
+                // Return the page with validation errors
                 return Page();
             }
+
         }
     }
 }
+        
+    
+
