@@ -19,9 +19,9 @@ namespace FoodForThoughtWeb.Pages.Account
             if (ModelState.IsValid)
             {
 				SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
-                string cmdText = "SELECT Password FROM Person WHERE Email = @email";
+                string cmdText = "SELECT Password FROM Person WHERE Email=@email";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
-               // cmd.Parameters.AddWithValue("@email", LoginUser.Email);
+                cmd.Parameters.AddWithValue("@email", LoginUser.Email);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
                 if (reader.HasRows)
@@ -52,11 +52,11 @@ namespace FoodForThoughtWeb.Pages.Account
 					return Page();
 				}
 			}
-            else
-            {
-                return Page();
-            }
-        }
+			    else
+			    {
+				return Page();
+			    }
+		}
 
     }
 }
