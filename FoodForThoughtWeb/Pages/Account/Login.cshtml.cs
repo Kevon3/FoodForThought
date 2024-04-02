@@ -48,7 +48,7 @@ namespace FoodForThoughtWeb.Pages.Account
 
                 }
                 conn.Close();
-                return RedirectToPage();
+                return RedirectToPage("Home");
 
             }
             else
