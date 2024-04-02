@@ -14,7 +14,7 @@ namespace FoodForThoughtWeb.Pages.Account
         {
 
         }
-        public IActionResult OnPost()
+        public ActionResult OnPost()
         {
             if (ModelState.IsValid)
             {
