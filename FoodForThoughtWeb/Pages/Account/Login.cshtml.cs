@@ -33,7 +33,7 @@ namespace FoodForThoughtWeb.Pages.Account
                         string passwordHash = reader.GetString(0);
                         if (SecurityHelper.VerifyPassword(LoginUser.Password, passwordHash))
                         {
-                            return RedirectToPage("Register");
+                            return RedirectToPage("Profile");
                         }
                         else
                         {
@@ -48,7 +48,7 @@ namespace FoodForThoughtWeb.Pages.Account
 
                 }
                 conn.Close();
-                return RedirectToPage("Register");
+                return RedirectToPage("Profile");
 
             }
             else
