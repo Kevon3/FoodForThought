@@ -19,7 +19,7 @@ namespace FoodForThoughtWeb.Pages.Account
             if (ModelState.IsValid)
             {
 				SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
-                string cmdText = "SELCET Password FROM Person WHERE Email = @email";
+                string cmdText = "SELECT Password FROM Person WHERE Email = @email";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@email", LoginUser.Email);
                 conn.Open();
