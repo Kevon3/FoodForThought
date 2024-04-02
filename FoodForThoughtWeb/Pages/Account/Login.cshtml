@@ -8,7 +8,7 @@
 		<label class= "form-label" asp-for = "LoginUser.Email"></label>
 	</div>
 	<div class= "col-10">
-		<input type itemid="email" class = "form-control"/>
+		<input type ="email" class = "form-control" asp-for="LoginUser.Email"/>
 		<span class=" text-danger" asp-validation-for="LoginUser.Email"></span>
 		</div>
 	</div>
@@ -18,7 +18,7 @@
 			<label class="form-label" asp-for="LoginUser.Password"></label>
 	</div>
 	<div class="col-10">
-		<input type itemid="password" class="form-control" />
+		<input type ="password" class="form-control" asp-for = "LoginUser.Password" />
 			<span class=" text-danger" asp-validation-for="LoginUser.Password"></span>
 	</div>
 </div>
