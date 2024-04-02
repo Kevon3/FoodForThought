@@ -1,4 +1,4 @@
-using FoodForThoughtWeb.Pages.Model;
+using FoodForThoughtWeb.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -17,7 +17,7 @@ namespace FoodForThoughtWeb.Pages.Account
         {
             if (ModelState.IsValid)
             {
-                string connString = "Server=(localdb)\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
+                string connString = "Server=(localdb)\\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
                 SqlConnection conn = new SqlConnection(connString);
                 string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@firstName, @lastName, @email, @password,@username)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
