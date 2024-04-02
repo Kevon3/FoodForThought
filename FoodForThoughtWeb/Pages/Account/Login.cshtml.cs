@@ -20,7 +20,7 @@ namespace FoodForThoughtWeb.Pages.Account
             if (ModelState.IsValid)
             {
                 SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
-                string cmdText = "SELECT PasswordHash FROM Person WHERE Email=@email";
+                String cmdText = "SELECT Password FROM Person WHERE Email=@email;c";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@email", LoginUser.Email);
                 conn.Open();
@@ -56,8 +56,9 @@ namespace FoodForThoughtWeb.Pages.Account
                 return Page();
             }
 
-            }
         }
-
     }
+
+}
+
 
