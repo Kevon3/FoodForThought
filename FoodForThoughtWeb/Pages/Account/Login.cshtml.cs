@@ -3,6 +3,7 @@ using FoodForThoughtWeb.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using System.Runtime.Intrinsics.X86;
 
 namespace FoodForThoughtWeb.Pages.Account
 {
@@ -19,7 +20,7 @@ namespace FoodForThoughtWeb.Pages.Account
             if (ModelState.IsValid)
             {
                 SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
-                string cmdText = "SELECT Password FROM Person WHERE Email=@email";
+                String cmdText = "SELECT Password FROM Person WHERE Email=@email";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@email", LoginUser.Email);
                 conn.Open();
@@ -40,26 +41,21 @@ namespace FoodForThoughtWeb.Pages.Account
                             return Page();
                         }
                     }
-                    else
-                    {
-                        ModelState.AddModelError("LoginError", "Invalid credentials. Try again.");
-                        return Page();
-                    }
                 }
                 else
                 {
                     ModelState.AddModelError("LoginError", "Invalid credentials. Try again.");
-                    return Page();
+
                 }
                 conn.Close();
                 return RedirectToPage();
+
             }
-
-
             else
             {
                 return Page();
             }
+
             }
         }
 
