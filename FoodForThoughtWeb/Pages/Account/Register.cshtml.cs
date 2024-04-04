@@ -18,10 +18,19 @@ namespace FoodForThoughtWeb.Pages.Account
         {
             if (ModelState.IsValid)
             {
+                if (EmailDoesNotExist(NewPerson.Email))
+                {
+                    RegisterUser();
+                    return RedirectToPage("Login");
+                }
+                else
+                {
+
+                }
 
                 
                 //string connString = "Server=(localdb)\\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
-                SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
+                /*SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
                 string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@username, @firstName, @lastName, @email, @password)";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@username", NewPerson.Username);
@@ -31,7 +40,7 @@ namespace FoodForThoughtWeb.Pages.Account
                 cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(NewPerson.Password));
 
                 conn.Open();
-                cmd.ExecuteNonQuery();
+                cmd.ExecuteNonQuery();*/
             
 
                 return RedirectToPage("Login");
@@ -42,6 +51,31 @@ namespace FoodForThoughtWeb.Pages.Account
                 return Page();
             }
 
+        }
+
+        private void RegisterUser()
+        {
+            throw new NotImplementedException();
+        }
+
+        private bool EmailDoesNotExist(string email)
+        {
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
+            {
+                string cmdText = "SELECT * FROM Person WHERE Email=@email";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@email", email);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if(reader.HasRows)
+                {
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+            }
         }
     }
 }
