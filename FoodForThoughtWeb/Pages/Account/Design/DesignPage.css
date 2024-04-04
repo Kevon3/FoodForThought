@@ -1,0 +1,26 @@
+﻿/* styles.css */
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #9ae18a; /* Green color for grass */
+}
+
+main {
+    padding: 20px;
+}
+
+.nav-item {
+    background-color: #a67351; /* Brown color for border */
+    color: #fff;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Picnic Blanket Design */
+body {
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.vecteezy.com%2Fvector-art%2F28620924-gingham-diagonal-seamless-pattern-in-purple-pastel-color-vichy-plaid-design-for-easter-holiday-textile-decorative-vector-checkered-pattern-for-fabric-picnic-blanket-tablecloth-dress-napkin&psig=AOvVaw3_3ySipmla7dh-lfPPfD-F&ust=1712351962830000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCKjLgqa-qYUDFQAAAAAdAAAAABAJ');
+    background-repeat: repeat;
+}
