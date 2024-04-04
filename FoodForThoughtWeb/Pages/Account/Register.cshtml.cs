@@ -26,7 +26,8 @@ namespace FoodForThoughtWeb.Pages.Account
                 }
                 else
                 {
-
+                    ModelState.AddModelError("RegisterError", "This email already exists. Try a different one.");
+                    return Page();
                 }
 
                 
@@ -44,7 +45,7 @@ namespace FoodForThoughtWeb.Pages.Account
                 cmd.ExecuteNonQuery();*/
             
 
-                return RedirectToPage("Login");
+                //return RedirectToPage("Login");
             }
             else
             {
