@@ -18,6 +18,8 @@ namespace FoodForThoughtWeb.Pages.Account
         {
             if (ModelState.IsValid)
             {
+
+                
                 //string connString = "Server=(localdb)\\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
                 SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
                 string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@username, @firstName, @lastName, @email, @password)";
