@@ -1,5 +1,6 @@
 using FoodForThoughtBusiness;
 using FoodForThoughtWeb.Model;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
@@ -55,7 +56,19 @@ namespace FoodForThoughtWeb.Pages.Account
 
         private void RegisterUser()
         {
-            throw new NotImplementedException();
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
+            {
+                string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@username, @firstName, @lastName, @email, @password)";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@username", NewPerson.Username);
+                cmd.Parameters.AddWithValue("@firstName", NewPerson.FirstName);
+                cmd.Parameters.AddWithValue("@lastName", NewPerson.LastName);
+                cmd.Parameters.AddWithValue("@email", NewPerson.Email);
+                cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(NewPerson.Password));
+
+                conn.Open();
+                cmd.ExecuteNonQuery(); 
+            }
         }
 
         private bool EmailDoesNotExist(string email)
@@ -77,6 +90,8 @@ namespace FoodForThoughtWeb.Pages.Account
                 }
             }
         }
+
+
     }
 }
         
