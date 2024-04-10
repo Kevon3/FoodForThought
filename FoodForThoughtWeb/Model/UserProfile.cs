@@ -4,7 +4,7 @@ namespace FoodForThoughtWeb.Model
 {
     public class UserProfile
     {
-        public int UserID { get; set; }
+        public int UserId { get; set; }
         //[Required]
 
         //[Required(ErrorMessage = "The Username field is required.")]
@@ -23,7 +23,7 @@ namespace FoodForThoughtWeb.Model
         //[Required]
 
         //[Required]
-        public int AllergyID { get; set; }
+        public int AllergyId { get; set; }
         //public int UserId {  get; set; }
 
 

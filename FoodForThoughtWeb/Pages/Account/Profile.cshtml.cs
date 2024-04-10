@@ -17,9 +17,9 @@ namespace FoodForThoughtWeb.Pages.Account
         private void PopulateProfile()
         {
             profile.Username = "h";
-            profile.FirstName = "Test";
-            profile.LastName = "Test";
-            profile.Email = "Test";
+            profile.FirstName = "Kevin";
+            profile.LastName = "Harvey";
+            profile.Email = "h@gmail.com";
         }
     }
 }
