@@ -89,6 +89,7 @@ namespace FoodForThoughtWeb.Pages.Account
                         {
                             int userId = reader.GetInt32(1);
                             //UpdateLastLoginTime(userId);
+
                             return true;    
                         }else { 
                             return false; 
