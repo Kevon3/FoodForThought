@@ -12,7 +12,7 @@ namespace FoodForThoughtWeb.Model
         public string Username { get; set; }
 
         //[Required(ErrorMessage = "The First Name field is required.")]
-        //[Display(Name = "First Name")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
