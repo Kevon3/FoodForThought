@@ -28,7 +28,7 @@ namespace FoodForThoughtWeb.Pages.Recipes
 		{
 			using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
 			{
-				string cmdText = "SELECT DishName, Rating, RecipeId FROM Recipe WHERE CuisineId = @itemId";
+				string cmdText = "SELECT DishName, Rating,Ingredients, Steps, RecipeId FROM Recipe WHERE CuisineId = @itemId";
 				SqlCommand cmd = new SqlCommand(cmdText, conn);
 				cmd.Parameters.AddWithValue("@itemId", id);
 				conn.Open();
@@ -41,6 +41,8 @@ namespace FoodForThoughtWeb.Pages.Recipes
 						item.DishName = reader.GetString(0);
 						item.Rating = reader.GetInt32(1);
 						item.RecipeId = reader.GetInt32(2);
+						item.Ingredients = reader.GetString(3);
+						item.Steps = reader.GetString(4);
 						Recipes.Add(item);
 					}
 

@@ -15,6 +15,12 @@ namespace FoodForThoughtWeb.Model
         [Required]
         [Display(Name = "Cuisine: ")]
         public int CuisineId {  get; set; }
+        [Required]
+        [Display(Name = "Ingredients: ")]
+        public string Ingredients { get; set; }
+        [Required]
+        [Display(Name = "Steps: ")]
+        public string Steps { get; set; }
        // [Required]
        /* [Display(Name = "Ingredients + Steps:  ")]
         public int IngredientId { get; set; }*/

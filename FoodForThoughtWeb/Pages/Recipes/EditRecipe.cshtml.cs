@@ -24,12 +24,14 @@ namespace FoodForThoughtWeb.Pages.Recipes
 			{
 				using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
 				{
-					string cmdText = "UPDATE Recipe SET DishName = @dishName, Rating = @rating, CuisineId = @cuisineId WHERE RecipeId= @itemId";
+					string cmdText = "UPDATE Recipe SET DishName = @dishName, Rating = @rating,Ingredients=@ingredients, Steps=@steps, CuisineId = @cuisineId WHERE RecipeId= @itemId";
 					SqlCommand cmd = new SqlCommand(cmdText, conn);
 					cmd.Parameters.AddWithValue("@itemId", id);
 					cmd.Parameters.AddWithValue("@dishName", Item.DishName);
 					cmd.Parameters.AddWithValue("@rating", Item.Rating);
+					cmd.Parameters.AddWithValue("@steps", Item.Steps);
 					cmd.Parameters.AddWithValue("@cuisineId", Item.CuisineId);
+					
 
 					conn.Open();
 					cmd.ExecuteNonQuery();
@@ -59,19 +61,14 @@ namespace FoodForThoughtWeb.Pages.Recipes
 						Cuisine.Add(cuisine);
 
 					}
-
-
 				}
-
-
-
 			}
 		}
 		private void PopulateRecipeItem(int id)
 		{
 			using(SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
 			{
-				string cmdText = "SELECT DishName, Rating, CuisineId FROM Recipe WHERE RecipeId=@itemId";
+				string cmdText = "SELECT DishName, Rating, Ingredients, Steps, CuisineId FROM Recipe WHERE RecipeId=@itemId";
 				SqlCommand cmd = new SqlCommand(cmdText, conn);
 				cmd.Parameters.AddWithValue("@itemId", id);
 				conn.Open();
@@ -82,6 +79,8 @@ namespace FoodForThoughtWeb.Pages.Recipes
 					Item.RecipeId = id;
 					Item.DishName = reader.GetString(0);
 					Item.Rating = reader.GetInt32(1);
+					Item.Ingredients = reader.GetString(2);
+					Item.Steps = reader.GetString(3);
 					Item.CuisineId = reader.GetInt32(2);
 				}
 			}
