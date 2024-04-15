@@ -26,12 +26,14 @@ namespace FoodForThoughtWeb.Pages.Recipes
             {
                 using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
                 {
-                    string cmdText = "INSERT INTO Recipe(DishName, Rating, CuisineId) " +
-                    "VALUES (@dishName, @rating, @cuisineId)";
+                    string cmdText = "INSERT INTO Recipe(DishName, Rating, Ingredients, Steps, CuisineId) " +
+                    "VALUES (@dishName, @rating,@ingredients, @steps, @cuisineId)";
                     SqlCommand cmd = new SqlCommand(cmdText, conn);
                     cmd.Parameters.AddWithValue("@dishName", newRecipeItem.DishName);
                     cmd.Parameters.AddWithValue("@rating", newRecipeItem.Rating);
                     cmd.Parameters.AddWithValue("@cuisineId", newRecipeItem.CuisineId);
+                    cmd.Parameters.AddWithValue("@ingredients", newRecipeItem.Ingredients);
+                    cmd.Parameters.AddWithValue("@steps", newRecipeItem.Steps);
 
                     conn.Open();
                     cmd.ExecuteNonQuery();

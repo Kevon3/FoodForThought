@@ -28,6 +28,22 @@
 	</div>
 	<div class="row m-2">
 		<div class="col-2">
+			<label asp-for="newRecipeItem.Ingredients"></label>
+		</div>
+		<div class="col-10">
+			<textarea rows="5" class="form-control" asp-for="newRecipeItem.Ingredients"></textarea>
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="newRecipeItem.Steps"></label>
+		</div>
+			<div class="col-10">
+			<textarea rows="5" class="form-control" asp-for="newRecipeItem.Steps"></textarea>
+			</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
 			<label asp-for="newRecipeItem.CuisineId"></label>
 		</div>
 		<div class="col-10">

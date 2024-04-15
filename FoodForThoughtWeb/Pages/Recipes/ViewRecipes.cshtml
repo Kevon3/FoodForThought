@@ -50,6 +50,34 @@
 					<label class="form-label">@recipeItem.DishName</label>
 				</div>
 			</div>
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.Ingredients"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.Ingredients</label>
+				</div>
+			</div>
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.Steps"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.Steps</label>
+				</div>
+			</div>
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<a asp-page ="EditRecipe" asp-route-id="@recipeItem.RecipeId" class ="btn custom-btn">Edit Recipe</a>
+				</div>
+				
+			</div>
 
 		</div>
 		<div class="row m-2 border">
