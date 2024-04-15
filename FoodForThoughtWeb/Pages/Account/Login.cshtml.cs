@@ -1,9 +1,12 @@
 using FoodForThoughtBusiness;
 using FoodForThoughtWeb.Model;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
 using System.Runtime.Intrinsics.X86;
+using System.Security.Claims;
 
 namespace FoodForThoughtWeb.Pages.Account
 {
@@ -68,7 +71,7 @@ namespace FoodForThoughtWeb.Pages.Account
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString())
 )
             {
-                string cmdText = "SELECT Password, UserId FROM Person WHERE Email=@email";
+                string cmdText = "SELECT Password, UserId, FirstName FROM Person WHERE Email=@email";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 cmd.Parameters.AddWithValue("@email", LoginUser.Email);
 
@@ -88,7 +91,24 @@ namespace FoodForThoughtWeb.Pages.Account
                         if(SecurityHelper.VerifyPassword(LoginUser.Password, passwordHash))
                         {
                             int userId = reader.GetInt32(1);
+
+                            string name = reader.GetString(2);
                             //UpdateLastLoginTime(userId);
+
+                            //Create a list of claims
+                            Claim emailClaim = new Claim(ClaimTypes.Email, LoginUser.Email);
+                            Claim nameClaim = new Claim(ClaimTypes.Name, name);
+
+                            List<Claim> claims = new List<Claim> { emailClaim, nameClaim };
+
+                            //2. Create a ClaimIdentity
+                            ClaimsIdentity identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+                            //3. Create a ClaimsPrincipal
+                            ClaimsPrincipal principal = new ClaimsPrincipal(identity);
+
+                            //4. Create an authentication Cookie
+                            HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
 
                             return true;    
                         }else { 
