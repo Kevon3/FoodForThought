@@ -1,0 +1,55 @@
+﻿@page
+@model FoodForThoughtWeb.Pages.Recipes.EditRecipeModel
+@{
+}
+<style>
+	.custom-btn {
+		background-color: rosybrown;
+		color: white;
+		border: none;
+	}
+</style>
+<form method="post" class=" form-group">
+	<div class="row m-2">
+		<div class="col-2">
+			<h3>Edit Recipe</h3>
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="Item.DishName"></label>
+		</div>
+		<div class="col-10">
+			<input type="text" class="form-control" asp-for="Item.DishName" />
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="Item.Rating"></label>
+		</div>
+		<div class="col-10">
+			<input type="number" class="form-control" asp-for="Item.Rating" />
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="Item.CuisineId"></label>
+		</div>
+		<div class="col-10">
+			<select asp-for="Item.CuisineId" asp-items="@Model.Cuisine"></select>
+		</div>
+	</div>
+	
+	<div class="row m-2">
+		<div class="col-2">
+			<button id="btnAdd" class="btn custom-btn">Update!</button>
+		</div>
+</form>
+@* <div class="row m-2">
+	<div class="col-2">
+	<label asp-for="Item.IngredientId"></label>
+	</div>
+	<div class="col-10">
+	<input type="text" class="form-control" asp-for="Item.IngredientId" />
+	</div>
+	</div> *@

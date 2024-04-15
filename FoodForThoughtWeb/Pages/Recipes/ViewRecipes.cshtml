@@ -1,0 +1,77 @@
+﻿@page
+@model FoodForThoughtWeb.Pages.Recipes.ViewRecipesModel
+@{
+}
+<style>
+	.custom-btn {
+		background-color: rosybrown;
+		color: white;
+		border: none;
+	}
+</style>
+<form method="post" class="form-group">
+
+	<div class="row m-2">
+		<div class="col-2">
+			<a asp-page="AddRecipe" class="btn custom-btn">Add Recipe</a>
+		</div>
+
+	</div>
+	<div class = "row m-2">
+		<div class="col-2">
+			<label class="form-label">Cuisine</label>
+		</div>
+		<div class="col-8">
+			<select asp-for="SelectedCuisineId" asp-items="Model.Cuisine"></select>
+		</div>
+		<div class="col-2">
+			<button class = "btn custom-btn" id="btnView">Display Recipes</button>
+		</div>
+	</div>
+	@foreach (var recipeItem in Model.Recipes)
+	{
+		<div class="row m-2 border">
+			<div class = "row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.RecipeId"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.RecipeId</label>
+				</div>
+			</div>
+			
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.DishName"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.DishName</label>
+				</div>
+			</div>
+
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<a asp-page ="EditRecipe" asp-route-id="@recipeItem.RecipeId" class ="btn custom-btn">Edit Recipe</a>
+				</div>
+				
+			</div>
+
+		</div>
+		
+		@* <div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.CuisineId"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.RecipeId</label>
+				</div>
+			</div>
+
+		</div> *@
+	}
+</form>

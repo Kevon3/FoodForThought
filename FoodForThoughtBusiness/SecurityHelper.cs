@@ -13,7 +13,7 @@ namespace FoodForThoughtBusiness
 		}
 		public static string GetDBConnectionString()
 		{
-			string connString = "Server =(localdb)\\MSSQLLocalDB;Database=FoodForThought;Trusted_Connection = true;";
+			string connString = "Server=(localdb)\\MSSQLLocalDB;Database=FoodForThought;Trusted_Connection = true;";
 			return connString;
 		}
 	}
