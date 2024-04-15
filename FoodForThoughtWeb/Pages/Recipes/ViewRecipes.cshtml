@@ -30,7 +30,7 @@
 	</div>
 	@foreach (var recipeItem in Model.Recipes)
 	{
-		<div class="row m-2 border">
+		@* <div class="row m-2 border">
 			<div class = "row m-2">
 				<div class="col-2">
 					<label class="form-label" asp-for="@recipeItem.RecipeId"></label>
@@ -39,7 +39,7 @@
 					<label class="form-label">@recipeItem.RecipeId</label>
 				</div>
 			</div>
-			
+			 *@
 		</div>
 		<div class="row m-2 border">
 			<div class="row m-2">
@@ -48,6 +48,16 @@
 				</div>
 				<div class="col-10">
 					<label class="form-label">@recipeItem.DishName</label>
+				</div>
+			</div>
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.Rating"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.Rating</label>
 				</div>
 			</div>
 		</div>
@@ -80,15 +90,7 @@
 			</div>
 
 		</div>
-		<div class="row m-2 border">
-			<div class="row m-2">
-				<div class="col-2">
-					<a asp-page ="EditRecipe" asp-route-id="@recipeItem.RecipeId" class ="btn custom-btn">Edit Recipe</a>
-				</div>
-				
-			</div>
-
-		</div>
+	
 		
 		@* <div class="row m-2 border">
 			<div class="row m-2">

@@ -29,6 +29,7 @@ namespace FoodForThoughtWeb.Pages.Recipes
 					cmd.Parameters.AddWithValue("@itemId", id);
 					cmd.Parameters.AddWithValue("@dishName", Item.DishName);
 					cmd.Parameters.AddWithValue("@rating", Item.Rating);
+					cmd.Parameters.AddWithValue("@ingredients", Item.Ingredients);
 					cmd.Parameters.AddWithValue("@steps", Item.Steps);
 					cmd.Parameters.AddWithValue("@cuisineId", Item.CuisineId);
 					
@@ -81,7 +82,7 @@ namespace FoodForThoughtWeb.Pages.Recipes
 					Item.Rating = reader.GetInt32(1);
 					Item.Ingredients = reader.GetString(2);
 					Item.Steps = reader.GetString(3);
-					Item.CuisineId = reader.GetInt32(2);
+					Item.CuisineId = reader.GetInt32(4);
 				}
 			}
 				

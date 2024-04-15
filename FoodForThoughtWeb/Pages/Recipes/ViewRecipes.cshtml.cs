@@ -40,9 +40,9 @@ namespace FoodForThoughtWeb.Pages.Recipes
 						var item = new RecipeItem();
 						item.DishName = reader.GetString(0);
 						item.Rating = reader.GetInt32(1);
-						item.RecipeId = reader.GetInt32(2);
-						item.Ingredients = reader.GetString(3);
-						item.Steps = reader.GetString(4);
+						item.Ingredients = reader.GetString(2);
+						item.Steps = reader.GetString(3);
+						item.RecipeId = reader.GetInt32(4);
 						Recipes.Add(item);
 					}
 
