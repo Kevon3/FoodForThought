@@ -1,6 +1,7 @@
 ﻿@page
 @model FoodForThoughtWeb.Pages.Recipes.ViewRecipesModel
 @{
+	Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
 <style>
 	.custom-btn {

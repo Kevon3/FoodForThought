@@ -1,7 +1,9 @@
 ﻿@page
 @model FoodForThoughtWeb.Pages.Recipes.AddRecipeModel
 @{
+	Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
+
 <style>
 	.custom-btn {
 		background-color: rosybrown;
