@@ -1,5 +1,6 @@
 using FoodForThoughtBusiness;
 using FoodForThoughtWeb.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -8,6 +9,7 @@ using Microsoft.Data.SqlClient;
 namespace FoodForThoughtWeb.Pages.Recipes
 {
     [BindProperties]
+	[Authorize]
     public class ViewRecipesModel : PageModel
     {
 		public List<SelectListItem> Cuisine { get; set; } = new List<SelectListItem>();
