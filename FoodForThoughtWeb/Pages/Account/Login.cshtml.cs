@@ -26,29 +26,7 @@ namespace FoodForThoughtWeb.Pages.Account
                 {
                     return RedirectToPage("Profile");
                 }
-                /*SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
-                String cmdText = "SELECT Password FROM Person WHERE Email=@email;";
-                SqlCommand cmd = new SqlCommand(cmdText, conn);
-                cmd.Parameters.AddWithValue("@email", LoginUser.Email);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    if (!reader.IsDBNull(0))
-                    {
-                        string passwordHash = reader.GetString(0);
-                        if (SecurityHelper.VerifyPassword(LoginUser.Password, passwordHash))
-                        {
-                            return RedirectToPage("Profile");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("LoginError", "Invalid credentials. Try again.");
-                            return Page();
-                        }
-                    }
-                }*/
+                
                 else
                 {
                     ModelState.AddModelError("LoginError", "Invalid credentials. Try again.");
@@ -93,7 +71,7 @@ namespace FoodForThoughtWeb.Pages.Account
                             int userId = reader.GetInt32(1);
 
                             string name = reader.GetString(2);
-                            //UpdateLastLoginTime(userId);
+                           
 
                             //Create a list of claims
                             Claim emailClaim = new Claim(ClaimTypes.Email, LoginUser.Email);
@@ -129,4 +107,26 @@ namespace FoodForThoughtWeb.Pages.Account
 
 }
 
-
+/*SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
+                String cmdText = "SELECT Password FROM Person WHERE Email=@email;";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@email", LoginUser.Email);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    if (!reader.IsDBNull(0))
+                    {
+                        string passwordHash = reader.GetString(0);
+                        if (SecurityHelper.VerifyPassword(LoginUser.Password, passwordHash))
+                        {
+                            return RedirectToPage("Profile");
+                        }
+                        else
+                        {
+                            ModelState.AddModelError("LoginError", "Invalid credentials. Try again.");
+                            return Page();
+                        }
+                    }
+                }*/

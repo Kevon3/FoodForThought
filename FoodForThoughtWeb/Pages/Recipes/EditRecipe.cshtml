@@ -3,7 +3,97 @@
 @{
 	Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
+
 <style>
+    .custom-btn {
+        background-color: rosybrown;
+        color: white;
+        border: none;
+    }
+
+    .form-container {
+        width: 570px;
+        margin: 0 auto; /* Center the form horizontally */
+        padding: 20px;
+        background-color: #f8f9fa; /* Light gray background */
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+        text-align: center;
+    }
+
+    /* Style for form labels */
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 0px;
+        margin-right: 0px; /* Add margin to the right side */
+        color: rosybrown;
+    }
+
+    /* Style for form inputs */
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ced4da; /* Gray border */
+        padding: 8px;
+        width: 95%;
+        box-sizing: border-box;
+        margin-left: 10px;
+    }
+</style>
+
+<form method="post" class="form-group form-container">
+    <h3 class="form-title">Edit Recipe</h3>
+    <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label" asp-for="Item.DishName"></label>
+        </div>
+        <div class="col-10">
+            <input type="text" class="form-control" asp-for="Item.DishName" />
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label" asp-for="Item.Rating"></label>
+        </div>
+        <div class="col-10">
+            <input type="number" class="form-control" asp-for="Item.Rating" />
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label" asp-for="Item.Ingredients"></label>
+        </div>
+        <div class="col-10">
+            <textarea rows="5" class="form-control" asp-for="Item.Ingredients"></textarea>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label" asp-for="Item.Steps"></label>
+        </div>
+        <div class="col-10">
+            <textarea rows="5" class="form-control" asp-for="Item.Steps"></textarea>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label" asp-for="Item.CuisineId"></label>
+        </div>
+        <div class="col-10">
+            <select class="form-control" asp-for="Item.CuisineId" asp-items="@Model.Cuisine"></select>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-12">
+            <button id="btnAdd" class="btn custom-btn btn-block">Update!</button>
+        </div>
+    </div>
+</form>
+
+
+@* <style>
 	.custom-btn {
 		background-color: rosybrown;
 		color: white;
@@ -61,7 +151,7 @@
 		<div class="col-2">
 			<button id="btnAdd" class="btn custom-btn">Update!</button>
 		</div>
-</form>
+</form> *@
 @* <div class="row m-2">
 	<div class="col-2">
 	<label asp-for="Item.IngredientId"></label>

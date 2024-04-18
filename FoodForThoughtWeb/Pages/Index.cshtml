@@ -5,11 +5,79 @@
 
     Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
+<form method="post" class="form-group">
+<style>
+	.custom-btn {
+		background-color: rosybrown;
+		color: white;
+		border: none;
+	}
 
-<div class="text-center">
+	.recipe-container {
+		background-color: #ffffff; /* White background */
+		padding: 20px;
+		border-radius: 5px;
+		margin-bottom: 20px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+
+		.recipe-container img {
+			width: 100%;
+			border-radius: 5px;
+			margin-bottom: 10px;
+		}
+
+	.recipe-details {
+		padding: 20px;
+	}
+
+		.recipe-details h3 {
+			color: rosybrown;
+			margin-top: 0;
+		}
+
+		.recipe-details p {
+			color: #333333;
+			margin-bottom: 10px;
+		}
+</style>
+
+	<div class="row justify-content-center">
+		<div class="col-md-8 text-center">
+			<h1 class="display-4 mb-4">Welcome to</h1>
+			<h1 class="display-4 mb-4">Food For Thought</h1>
+			<img src="https://www.timeoutabudhabi.com/cloud/timeoutabudhabi/2021/09/09/A0EcKhqo-best-dishes-abu-dhabi.jpg" alt="Food For Thought" class="img-fluid rounded">
+		</div>
+	</div>
+	</div>
+<div class="container mt-5">
+		<div class="row">
+			@foreach (var recipeItem in Model.Recipes)
+			{
+				<div class="col-lg-4 col-md-6 col-sm-12">
+					<div class="recipe-container">
+						<img src="https://hips.hearstapps.com/hmg-prod/images/crepes-index-64347419e3c7a.jpg?crop=0.888888888888889xw:1xh;center,top&resize=1200:*" alt="Recipe Image">
+						<div class="recipe-details">
+							<h3>@recipeItem.DishName</h3>
+							<p><strong>Rating:</strong> @recipeItem.Rating</p>
+							<p><strong>Ingredients:</strong> @recipeItem.Ingredients</p>
+							<p><strong>Steps:</strong> @recipeItem.Steps</p>
+							<div class="row justify-content-center">
+							</div>
+						</div>
+					</div>
+				</div>
+			}
+		</div>
+   
+
+	
+	
+</form>
+@* <div class="text-center">
     <h1 class="display-4"><strong>Welcome to</strong></h1>
     <h1 class="display-4"><strong>Food For Thought</strong></h1>
     <img src="https://www.timeoutabudhabi.com/cloud/timeoutabudhabi/2021/09/09/A0EcKhqo-best-dishes-abu-dhabi.jpg" alt="Title" width="1000" style="border: 5px solid rosybrown;">
 
   
-</div>
+</div> *@
