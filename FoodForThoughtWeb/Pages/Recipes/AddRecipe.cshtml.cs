@@ -28,14 +28,24 @@ namespace FoodForThoughtWeb.Pages.Recipes
             {
                 using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
                 {
-                    string cmdText = "INSERT INTO Recipe(DishName, Rating, Ingredients, Steps, CuisineId) " +
-                    "VALUES (@dishName, @rating,@ingredients, @steps, @cuisineId)";
+                    string cmdText = "INSERT INTO Recipe(DishName, Rating, Ingredients, Steps, CuisineId, url) " +
+                    "VALUES (@dishName, @rating, @ingredients, @steps, @cuisineId, @url)";
                     SqlCommand cmd = new SqlCommand(cmdText, conn);
                     cmd.Parameters.AddWithValue("@dishName", newRecipeItem.DishName);
                     cmd.Parameters.AddWithValue("@rating", newRecipeItem.Rating);
                     cmd.Parameters.AddWithValue("@cuisineId", newRecipeItem.CuisineId);
                     cmd.Parameters.AddWithValue("@ingredients", newRecipeItem.Ingredients);
                     cmd.Parameters.AddWithValue("@steps", newRecipeItem.Steps);
+
+                    // Check if url is null before adding the parameter
+                    if (newRecipeItem.url != null)
+                    {
+                        cmd.Parameters.AddWithValue("@url", newRecipeItem.url);
+                    }
+                    else
+                    {
+                        cmd.Parameters.AddWithValue("@url", DBNull.Value); // or null, depending on the database type
+                    }
 
                     conn.Open();
                     cmd.ExecuteNonQuery();
@@ -47,6 +57,7 @@ namespace FoodForThoughtWeb.Pages.Recipes
                 return Page();
             }
         }
+
         private void PopulateCuisineDDL()
         {
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))

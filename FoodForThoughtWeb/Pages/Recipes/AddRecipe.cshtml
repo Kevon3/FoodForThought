@@ -90,6 +90,15 @@
         </div>
     </div>
     <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label" asp-for="newRecipeItem.url"></label>
+        </div>
+        <div class="col-10">
+            <input type="text" class="form-control" asp-for="newRecipeItem.url" />
+            <span asp-validation-for="newRecipeItem.url"></span>
+        </div>
+    </div>
+    <div class="row m-2">
         <div class="col-12">
             <button id="btnAdd" class="btn custom-btn btn-block">Add Recipe!</button>
         </div>
