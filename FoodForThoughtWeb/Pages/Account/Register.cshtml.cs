@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace FoodForThoughtWeb.Pages.Account
 {
@@ -18,14 +19,14 @@ namespace FoodForThoughtWeb.Pages.Account
 
 		public IActionResult OnPost()
 		{
-			if (ModelState.IsValid)
-			{
+            if (ModelState.IsValid)
+            {
                 if (!IsPasswordValid(NewPerson.Password))
                 {
-                    ModelState.AddModelError("RegisterError", "Password must be at least 10 characters. :)");
+                    ModelState.AddModelError("RegisterError", "Password must be at least 10 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
                     return Page();
                 }
-                    if (UsernameExists(NewPerson.Username))
+                if (UsernameExists(NewPerson.Username))
 				{
 					ModelState.AddModelError("RegisterError", "This username exists, please try another one.");
 					return Page();
@@ -109,11 +110,20 @@ namespace FoodForThoughtWeb.Pages.Account
 
         private bool IsPasswordValid(string password)
         {
-            return password.Length >= 10;
+            if (password.Length < 10)
+            {
+                return false;
+            }
+            if (!Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$"))
+            {
+                return false;
+            }
+            return true;
         }
-
     }
 }
+
+
 //string connString = "Server=(localdb)\\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
 /*SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
 string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@username, @firstName, @lastName, @email, @password)";
