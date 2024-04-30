@@ -17,9 +17,10 @@ namespace FoodForThoughtWeb.Pages.Recipes
         public int SelectedCuisineId { get; set; }
         public void OnGet()
         {
-			PopulateCuisineDDL();
-
-		}
+            int americanCuisineId = 1;
+            PopulateRecipe(americanCuisineId);
+            PopulateCuisineDDL();
+        }
 		public void OnPost()
 		{
 			PopulateCuisineDDL();
