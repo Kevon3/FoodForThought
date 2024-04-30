@@ -41,6 +41,17 @@
 			color: #333333;
 			margin-bottom: 10px;
 		}
+
+	.steps {
+		max-width: 600px; 
+		margin: 0 auto; 
+		overflow-wrap: break-word; 
+	}
+	.ingredients{
+		max-width: 600px;
+		margin: 0 auto;
+		overflow-wrap: break-word;
+	}
 </style>
 
 <form method="post" class="form-group">
@@ -79,8 +90,14 @@
 							<h3>@recipeItem.DishName</h3>
 						}
 						<p><strong>Rating:</strong> @recipeItem.Rating</p>
-						<p><strong>Ingredients:</strong> @recipeItem.Ingredients</p>
-						<p><strong>Steps:</strong> @recipeItem.Steps</p>
+						<p><strong>Ingredients:</strong></p>
+						<div class="ingredients">
+							<p>@recipeItem.Ingredients</p>
+						</div>
+						<p><strong>Steps:</strong></p>
+						<div class="steps">
+							<p>@recipeItem.Steps</p>
+						</div>
 						<div class="row justify-content-center">
 							<div class="col-12 text-center">
 								<a asp-page="EditRecipe" asp-route-id="@recipeItem.RecipeId" class="btn custom-btn">Edit Recipe</a>
