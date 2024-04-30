@@ -31,7 +31,7 @@ namespace FoodForThoughtWeb.Pages.Recipes
 		{
 			using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
 			{
-				string cmdText = "SELECT DishName, Rating,Ingredients, Steps, RecipeId FROM Recipe WHERE CuisineId = @itemId";
+				string cmdText = "SELECT DishName, Rating, Ingredients, Steps, RecipeId, Url FROM Recipe WHERE CuisineId = @itemId";
 				SqlCommand cmd = new SqlCommand(cmdText, conn);
 				cmd.Parameters.AddWithValue("@itemId", id);
 				conn.Open();
@@ -46,16 +46,19 @@ namespace FoodForThoughtWeb.Pages.Recipes
 						item.Ingredients = reader.GetString(2);
 						item.Steps = reader.GetString(3);
 						item.RecipeId = reader.GetInt32(4);
+
+						// Check if URL value is null before assigning it
+						if (!reader.IsDBNull(5))
+						{
+							item.url = reader.GetString(5); // Set the URL property
+						}
+
 						Recipes.Add(item);
 					}
-
-
 				}
-				
-
-
 			}
 		}
+
 
 		private void PopulateCuisineDDL()
 		{
