@@ -13,7 +13,7 @@
 		border: none;
 	}
 
-	.recipe-container {
+		.recipe-container {
 		background-color: #ffffff; /* White background */
 		padding: 20px;
 		border-radius: 5px;
@@ -27,9 +27,11 @@
 			margin-bottom: 10px;
 		}
 
-	.recipe-details {
-		padding: 20px;
-	}
+		.recipe-details {
+			padding: 20px;
+			max-height: 200px; 
+			overflow-y: auto; 
+		}
 
 		.recipe-details h3 {
 			color: rosybrown;
@@ -38,8 +40,8 @@
 
 		.recipe-details p {
 			color: #333333;
-			margin-bottom: 10px;
-		}
+			margin-bottom: 10px; 
+		} 
 </style>
 
 	<div class="row justify-content-center">
@@ -50,35 +52,38 @@
 		</div>
 	</div>
 	</div>
-<div class="container mt-5">
-		<div class="row">
+	<div class="container mt-5">
+		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
 			@foreach (var recipeItem in Model.Recipes)
-		{
-			<div class="col-lg-4 col-md-6 col-sm-12">
-				<div class="recipe-container">
-					@if (!string.IsNullOrEmpty(recipeItem.url))
-					{
-						<img src="@recipeItem.url" alt="Recipe Image">
-					}
-					else
-					{
-						<div class="no-image-icon"> </div> //if image is null or invalid, no image is displayed
-					}
-					<div class="recipe-details">
-						@if (!string.IsNullOrEmpty(recipeItem.DishName))
+			{
+				<div class="col mb-4">
+					<div class="recipe-container">
+						@if (!string.IsNullOrEmpty(recipeItem.url))
 						{
-							<h3>@recipeItem.DishName</h3>
+							<div class="recipe-image">
+								<img src="@recipeItem.url" alt="Recipe Image" class="img-fluid">
+							</div>
 						}
+						else
+						{
+							<div class="no-image-icon"> </div>
+							// If image is null or invalid, no image is displayed
+						}
+						<div class="recipe-details">
+							@if (!string.IsNullOrEmpty(recipeItem.DishName))
+							{
+								<h3>@recipeItem.DishName</h3>
+							}
 							<p><strong>Rating:</strong> @recipeItem.Rating</p>
 							<p><strong>Ingredients:</strong> @recipeItem.Ingredients</p>
 							<p><strong>Steps:</strong> @recipeItem.Steps</p>
-							<div class="row justify-content-center">
-							</div>
 						</div>
 					</div>
 				</div>
 			}
 		</div>
+	</div>
+
    
 
 	

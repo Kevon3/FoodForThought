@@ -86,11 +86,45 @@
         </div>
     </div>
     <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label" asp-for="Item.url">Image URL:</label>
+        </div>
+        <div class="col-6">
+            <input type="text" class="form-control" asp-for="Item.url" id="imageUrlInput" />
+            <span asp-validation-for="Item.url"></span>
+        </div>
+        <div class="col-4">
+            <img id="recipeImage" src="" alt="Recipe Image" style="max-width: 100px; max-height: 100px; width: 100%; height: auto;" />
+        </div>
+    </div>
+    <div class="row m-2">
         <div class="col-12">
             <button id="btnAdd" class="btn custom-btn btn-block">Update!</button>
         </div>
     </div>
 </form>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get references to the URL input field and the image element
+        const imageUrlInput = document.getElementById('imageUrlInput');
+        const recipeImage = document.getElementById('recipeImage');
+
+        // Add event listener to listen for changes in the URL input field
+        imageUrlInput.addEventListener('input', function () {
+            // Get the value of the URL input field
+            const imageUrl = imageUrlInput.value.trim();
+
+            // Update the src attribute of the image element with the URL value
+            if (imageUrl) {
+                recipeImage.src = imageUrl;
+                recipeImage.style.display = 'block'; // Show the image
+            } else {
+                recipeImage.src = ''; // Clear the image source
+                recipeImage.style.display = 'none'; // Hide the image
+            }
+        });
+    });
+</script>
 
 
 @* <style>
