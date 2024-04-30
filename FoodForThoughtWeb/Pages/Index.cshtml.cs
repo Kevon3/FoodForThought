@@ -28,7 +28,7 @@ namespace FoodForThoughtWeb.Pages
         {
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
-                string cmdText = "SELECT DishName, Rating,Ingredients, Steps, RecipeId FROM Recipe";
+                string cmdText = "SELECT DishName, Rating,Ingredients, Steps, RecipeId, url FROM Recipe";
                 SqlCommand cmd = new SqlCommand(cmdText, conn);
                 
                 conn.Open();
@@ -43,6 +43,11 @@ namespace FoodForThoughtWeb.Pages
                         item.Ingredients = reader.GetString(2);
                         item.Steps = reader.GetString(3);
                         item.RecipeId = reader.GetInt32(4);
+						// Check if URL value is null before assigning it
+						if (!reader.IsDBNull(5))
+						{
+							item.url = reader.GetString(5); // Set the URL property
+						}
 						Recipes.Add(item);
 					}
 

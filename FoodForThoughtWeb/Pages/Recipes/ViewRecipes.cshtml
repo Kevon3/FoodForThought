@@ -63,9 +63,19 @@
 		{
 			<div class="col-lg-4 col-md-6 col-sm-12">
 				<div class="recipe-container">
-					<img src="@recipeItem.url" alt="Recipe Image">
+					@if (!string.IsNullOrEmpty(recipeItem.url))
+					{
+						<img src="@recipeItem.url" alt="Recipe Image">
+					}
+					else
+					{
+						<div class="no-image-icon"> </div> //if image is null or invalid, no image is displayed
+					}
 					<div class="recipe-details">
-						<h3>@recipeItem.DishName</h3>
+						@if (!string.IsNullOrEmpty(recipeItem.DishName))
+						{
+							<h3>@recipeItem.DishName</h3>
+						}
 						<p><strong>Rating:</strong> @recipeItem.Rating</p>
 						<p><strong>Ingredients:</strong> @recipeItem.Ingredients</p>
 						<p><strong>Steps:</strong> @recipeItem.Steps</p>

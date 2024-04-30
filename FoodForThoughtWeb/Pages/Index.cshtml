@@ -53,12 +53,22 @@
 <div class="container mt-5">
 		<div class="row">
 			@foreach (var recipeItem in Model.Recipes)
-			{
-				<div class="col-lg-4 col-md-6 col-sm-12">
-					<div class="recipe-container">
-						<img src="https://hips.hearstapps.com/hmg-prod/images/crepes-index-64347419e3c7a.jpg?crop=0.888888888888889xw:1xh;center,top&resize=1200:*" alt="Recipe Image">
-						<div class="recipe-details">
+		{
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="recipe-container">
+					@if (!string.IsNullOrEmpty(recipeItem.url))
+					{
+						<img src="@recipeItem.url" alt="Recipe Image">
+					}
+					else
+					{
+						<div class="no-image-icon"> </div> //if image is null or invalid, no image is displayed
+					}
+					<div class="recipe-details">
+						@if (!string.IsNullOrEmpty(recipeItem.DishName))
+						{
 							<h3>@recipeItem.DishName</h3>
+						}
 							<p><strong>Rating:</strong> @recipeItem.Rating</p>
 							<p><strong>Ingredients:</strong> @recipeItem.Ingredients</p>
 							<p><strong>Steps:</strong> @recipeItem.Steps</p>
