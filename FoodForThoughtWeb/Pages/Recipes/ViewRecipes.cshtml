@@ -1,0 +1,178 @@
+﻿@page
+@model FoodForThoughtWeb.Pages.Recipes.ViewRecipesModel
+@{
+	Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
+}
+
+
+<style>
+	.custom-btn {
+		background-color: rosybrown;
+		color: white;
+		border: none;
+	}
+
+	.recipe-container {
+		background-color: #ffffff; /* White background */
+		padding: 20px;
+		border-radius: 5px;
+		margin-bottom: 20px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+
+		.recipe-container img {
+			width: 100%;
+			border-radius: 5px;
+			margin-bottom: 10px;
+		}
+
+	.recipe-details {
+		padding: 20px;
+	}
+
+		.recipe-details h3 {
+			color: rosybrown;
+			margin-top: 0;
+		}
+
+		.recipe-details p {
+			color: #333333;
+			margin-bottom: 10px;
+		}
+</style>
+
+<form method="post" class="form-group">
+	<div class="row m-2">
+		<div class="col-2">
+			<a asp-page="AddRecipe" class="btn custom-btn">Add Recipe</a>
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label class="form-label">Cuisine</label>
+		</div>
+		<div class="col-8">
+			<select asp-for="SelectedCuisineId" asp-items="Model.Cuisine"></select>
+		</div>
+		<div class="col-2">
+			<button class="btn custom-btn" id="btnView">Display Recipes</button>
+		</div>
+	</div>
+	<div class="row">
+		@foreach (var recipeItem in Model.Recipes)
+		{
+			<div class="col-lg-4 col-md-6 col-sm-12">
+				<div class="recipe-container">
+					<img src="@recipeItem.url" alt="Recipe Image">
+					<div class="recipe-details">
+						<h3>@recipeItem.DishName</h3>
+						<p><strong>Rating:</strong> @recipeItem.Rating</p>
+						<p><strong>Ingredients:</strong> @recipeItem.Ingredients</p>
+						<p><strong>Steps:</strong> @recipeItem.Steps</p>
+						<div class="row justify-content-center">
+							<div class="col-12 text-center">
+								<a asp-page="EditRecipe" asp-route-id="@recipeItem.RecipeId" class="btn custom-btn">Edit Recipe</a>
+								<a asp-page="DeleteRecipe" asp-route-id="@recipeItem.RecipeId" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item? This action cannot be undone!')">Delete Recipe</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		}
+	</div>
+</form>
+
+@* <style>
+	.custom-btn {
+		background-color: rosybrown;
+		color: white;
+		border: none;
+	}
+</style>
+<form method="post" class="form-group">
+
+	<div class="row m-2">
+		<div class="col-2">
+			<a asp-page="AddRecipe" class="btn custom-btn">Add Recipe</a>
+		</div>
+
+	</div>
+	<div class = "row m-2">
+		<div class="col-2">
+			<label class="form-label">Cuisine</label>
+		</div>
+		<div class="col-8">
+			<select asp-for="SelectedCuisineId" asp-items="Model.Cuisine"></select>
+		</div>
+		<div class="col-2">
+			<button class = "btn custom-btn" id="btnView">Display Recipes</button>
+		</div>
+	</div>
+	@foreach (var recipeItem in Model.Recipes)
+	{
+	
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.DishName"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.DishName</label>
+				</div>
+			</div>
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.Rating"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.Rating</label>
+				</div>
+			</div>
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.Ingredients"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.Ingredients</label>
+				</div>
+			</div>
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.Steps"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.Steps</label>
+				</div>
+			</div>
+		</div>
+		<div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<a asp-page ="EditRecipe" asp-route-id="@recipeItem.RecipeId" class ="btn custom-btn">Edit Recipe</a>
+				</div>
+				
+			</div>
+
+		</div>
+	 *@
+		
+		@* <div class="row m-2 border">
+			<div class="row m-2">
+				<div class="col-2">
+					<label class="form-label" asp-for="@recipeItem.CuisineId"></label>
+				</div>
+				<div class="col-10">
+					<label class="form-label">@recipeItem.RecipeId</label>
+				</div>
+			</div>
+
+		</div> 
+		}
+		</form>*@
+	

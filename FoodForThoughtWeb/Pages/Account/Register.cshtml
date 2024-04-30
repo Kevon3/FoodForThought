@@ -2,7 +2,118 @@
 @model FoodForThoughtWeb.Pages.Account.RegisterModel
 @{
 }
-<form method = "post">
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - Create Account</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/FoodForThoughtWeb.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="DesignPage.css" />
+    <style>
+        body {
+            background-color: peachpuff;
+        }
+
+        .register-container {
+            margin: 50px auto;
+            max-width: 400px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+            .register-container h1 {
+                text-align: center;
+                color: rosybrown;
+                margin-bottom: 30px;
+            }
+
+        .form-label {
+            color: rosybrown;
+        }
+
+        .btn-register {
+            background-color: rosybrown;
+            border: none;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+            .btn-register:hover {
+                background-color: pink; /* Darker shade of rosybrown */
+            }
+
+        .text-danger {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="register-container">
+                    <h1>Please create an account</h1>
+                    <form method="post">
+                        <div class="row m-2 text-danger" asp-validation-summary="All"></div>
+                        <div class="row m-2">
+                            <div class="col-12">
+                                <label class="form-label" asp-for="NewPerson.Username">Username</label>
+                                <input type="text" class="form-control" asp-for="NewPerson.Username" />
+                                <span class="text-danger" asp-validation-for="NewPerson.Username"></span>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-12">
+                                <label class="form-label" asp-for="NewPerson.FirstName">First Name</label>
+                                <input type="text" class="form-control" asp-for="NewPerson.FirstName" />
+                                <span class="text-danger" asp-validation-for="NewPerson.FirstName"></span>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-12">
+                                <label class="form-label" asp-for="NewPerson.LastName">Last Name</label>
+                                <input type="text" class="form-control" asp-for="NewPerson.LastName" />
+                                <span class="text-danger" asp-validation-for="NewPerson.LastName"></span>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-12">
+                                <label class="form-label" asp-for="NewPerson.Email">Email</label>
+                                <input type="text" class="form-control" asp-for="NewPerson.Email" />
+                                <span class="text-danger" asp-validation-for="NewPerson.Email"></span>
+                            </div>
+                        </div>
+                        <div class="row m-2">
+                            <div class="col-12">
+                                <label class="form-label" asp-for="NewPerson.Password">Password</label>
+                                <input type="password" class="form-control" asp-for="NewPerson.Password" />
+                                <span class="text-danger" asp-validation-for="NewPerson.Password"></span>
+                            </div>
+                        </div>   
+                        <div class="row m-2">
+                            <div class="col-12">
+                                <button id="btnRegister" class="btn btn-register" type="submit">Register</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+@* <form method = "post">
 	<center>
 		<h1>Please create an account :)</h1>
 	</center>
@@ -59,4 +170,4 @@
 			<button style ="background-color: rosybrown; border: none;" id="btnLogin" class="btn btn-primary">Register</button>
 		</div>
 
-</form>
+</form> *@
