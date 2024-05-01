@@ -7,12 +7,15 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/FoodForThoughtWeb.styles.css" asp-append-version="true" />
-   <link rel="stylesheet" href ="DesignPage.css" />
+    <link rel="stylesheet" href="DesignPage.css" />
+
+    <!-- Include Bootstrap Icons CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 </head>
-<body style=" background-color:peachpuff;" >
+<body style="background-color: peachpuff;">
     <header>
-        <nav  class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-peachpuff border-bottom:none; box-shadow mb-3">
-            <div style=" background-color: rosybrown; border-radius: 10px;" class="container">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-peachpuff border-bottom:none; box-shadow mb-3">
+            <div style="background-color: rosybrown; border-radius: 10px;" class="container">
                 <a class="navbar-brand" asp-area="" asp-page="/Index"><strong>Food For Thought</strong></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
@@ -21,7 +24,10 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index"><strong>Home</strong></a>
+                            <!-- Only the home icon without text -->
+                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">
+                                <i class="bi bi-house-door-fill"></i>
+                            </a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Privacy"><strong>Privacy</strong></a>
@@ -32,8 +38,6 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-page="/Account/Register"><strong>Register</strong></a>
                         </li>
-                       
-                        
                     </ul>
                 </div>
             </div>
