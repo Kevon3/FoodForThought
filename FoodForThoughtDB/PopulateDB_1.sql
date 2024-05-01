@@ -43,25 +43,25 @@ SET IDENTITY_INSERT [dbo].[Cuisine] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Allergies] ON 
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (1, N'Eggs')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (1, N'Eggs')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (2, N'Milk')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (2, N'Milk')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (3, N'Soy')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (3, N'Soy')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (4, N'Gluten')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (4, N'Gluten')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (5, N'Shellfish')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (5, N'Shellfish')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (6, N'Nuts')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (6, N'Nuts')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (7, N'Fish')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (7, N'Fish')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (8, N'Wheat')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (8, N'Wheat')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (9, N'Sesame')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (9, N'Sesame')
 GO
-INSERT [dbo].[Allergies] ([AllergyId], [Name]) VALUES (10, N'None')
+INSERT [dbo].[Allergies] ([AllergyId], [AllergyName]) VALUES (10, N'None')
 GO
 SET IDENTITY_INSERT [dbo].[Allergies] OFF
 GO
