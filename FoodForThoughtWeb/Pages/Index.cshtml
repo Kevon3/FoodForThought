@@ -41,7 +41,19 @@
 		.recipe-details p {
 			color: #333333;
 			margin-bottom: 10px; 
-		} 
+		}
+
+		.steps {
+			max-width: 600px;
+			margin: 0 auto;
+			overflow-wrap: break-word;
+		}
+
+		.ingredients {
+			max-width: 600px;
+			margin: 0 auto;
+			overflow-wrap: break-word;
+		}
 </style>
 
 	<div class="row justify-content-center">
@@ -75,8 +87,13 @@
 								<h3>@recipeItem.DishName</h3>
 							}
 							<p><strong>Rating:</strong> @recipeItem.Rating</p>
-							<p><strong>Ingredients:</strong> @recipeItem.Ingredients</p>
-							<p><strong>Steps:</strong> @recipeItem.Steps</p>
+							<div class="ingredients">
+								<p>@recipeItem.Ingredients</p>
+							</div>
+							<p><strong>Steps:</strong></p>
+							<div class="steps">
+								<p>@recipeItem.Steps</p>
+							</div>
 						</div>
 					</div>
 				</div>
