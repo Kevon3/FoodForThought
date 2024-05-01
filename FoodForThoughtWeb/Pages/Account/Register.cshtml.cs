@@ -17,42 +17,37 @@ namespace FoodForThoughtWeb.Pages.Account
 
         }
 
-		public IActionResult OnPost()
-		{
+        public IActionResult OnPost()
+        {
             if (ModelState.IsValid)
             {
-                if (!IsPasswordValid(NewPerson.Password))
+                if (UsernameExists(NewPerson.Username))
                 {
-                    ModelState.AddModelError("RegisterError", "Password must be at least 10 characters long and contain at least one uppercase letter, one lowercase letter, and one number.");
+                    ModelState.AddModelError("RegisterError", "This username exists, please try another one.");
                     return Page();
                 }
-                if (UsernameExists(NewPerson.Username))
-				{
-					ModelState.AddModelError("RegisterError", "This username exists, please try another one.");
-					return Page();
-				}
-				if (EmailDoesNotExist(NewPerson.Email))
-				{
-					RegisterUser();
-					return RedirectToPage("Login");
-				}
-				else
-				{
-					ModelState.AddModelError("RegisterError", "This email already exists. Try a different one.");
-					return Page();
-				}
+                if (EmailDoesNotExist(NewPerson.Email))
+                {
+                    RegisterUser();
+                    return RedirectToPage("Login");
+                }
+                else
+                {
+                    ModelState.AddModelError("RegisterError", "This email already exists. Try a different one.");
+                    return Page();
+                }
 
-				
-			}
-			
-			else
-			{
-				// Return the page with validation errors
-				return Page();
-			}
-		}
 
-		private void RegisterUser()
+            }
+
+            else
+            {
+                // Return the page with validation errors
+                return Page();
+            }
+        }
+
+        private void RegisterUser()
         {
             using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
@@ -65,7 +60,7 @@ namespace FoodForThoughtWeb.Pages.Account
                 cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(NewPerson.Password));
 
                 conn.Open();
-                cmd.ExecuteNonQuery(); 
+                cmd.ExecuteNonQuery();
             }
         }
 
@@ -78,7 +73,7 @@ namespace FoodForThoughtWeb.Pages.Account
                 cmd.Parameters.AddWithValue("@email", email);
                 conn.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-                if(reader.HasRows)
+                if (reader.HasRows)
                 {
                     return false;
                 }
@@ -88,37 +83,24 @@ namespace FoodForThoughtWeb.Pages.Account
                 }
             }
         }
-		private bool UsernameExists(string username)
-		{
-			using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
-			{
-				string cmdText = "SELECT * FROM Person WHERE Username=@username";
-				SqlCommand cmd = new SqlCommand(cmdText, conn);
-				cmd.Parameters.AddWithValue("@username", username);
-				conn.Open();
-				SqlDataReader reader = cmd.ExecuteReader();
-				if (reader.HasRows)
-				{
-					return true;
-				}
-				else
-				{
-					return false;
-				}
-			}
-		}
-
-        private bool IsPasswordValid(string password)
+        private bool UsernameExists(string username)
         {
-            if (password.Length < 10)
+            using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
             {
-                return false;
+                string cmdText = "SELECT * FROM Person WHERE Username=@username";
+                SqlCommand cmd = new SqlCommand(cmdText, conn);
+                cmd.Parameters.AddWithValue("@username", username);
+                conn.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
-            if (!Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$"))
-            {
-                return false;
-            }
-            return true;
         }
     }
 }
