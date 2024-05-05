@@ -6,22 +6,20 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 
-
 namespace FoodForThoughtWeb.Pages.Recipes
 {
-	[BindProperties]
+    [BindProperties]
     [Authorize]
-	public class AddRecipeModel : PageModel
+    public class AddRecipeModel : PageModel
     {
-        
         public RecipeItem newRecipeItem { get; set; } = new RecipeItem();
-
-       
         public List<SelectListItem> Cuisine { get; set; } = new List<SelectListItem>();
+
         public void OnGet()
         {
             PopulateCuisineDDL();
         }
+
         public IActionResult OnPost()
         {
             if (ModelState.IsValid)
@@ -29,7 +27,7 @@ namespace FoodForThoughtWeb.Pages.Recipes
                 using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
                 {
                     string cmdText = "INSERT INTO Recipe(DishName, Rating, Ingredients, Steps, CuisineId, url) " +
-                    "VALUES (@dishName, @rating, @ingredients, @steps, @cuisineId, @url)";
+                        "VALUES (@dishName, @rating, @ingredients, @steps, @cuisineId, @url)";
                     SqlCommand cmd = new SqlCommand(cmdText, conn);
                     cmd.Parameters.AddWithValue("@dishName", newRecipeItem.DishName);
                     cmd.Parameters.AddWithValue("@rating", newRecipeItem.Rating);
@@ -74,36 +72,10 @@ namespace FoodForThoughtWeb.Pages.Recipes
                         cuisine.Value = reader.GetInt32(0).ToString();
                         cuisine.Text = reader.GetString(1);
                         Cuisine.Add(cuisine);
-						
-					}
-					
-
-				}
-				
-
-
-			}
+                    }
+                }
+            }
         }
     }
 }
-/*
- * string cmdText = "SELECT CuisineId, Cuisine FROM Cuisine";
-                SqlCommand cmd = new SqlCommand(cmdText, conn);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    var cuisine = new SelectListItem();
-                    cuisine.Value = reader.GetInt32(0).ToString();
-                    cuisine.Text = reader.GetString(1);
-                    Cuisine.Add(cuisine);
-                }
 
-while (reader.Read())
-                {
-                    var cuisine = new SelectListItem();
-                    cuisine.Value = reader.GetInt32(0).ToString();
-                    cuisine.Text = reader.GetString(1);
-                    Cuisine.Add(cuisine);
-                }
-    */

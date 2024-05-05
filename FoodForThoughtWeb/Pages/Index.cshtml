@@ -2,117 +2,100 @@
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
-
     Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
+
 <form method="post" class="form-group">
-<style>
-	.custom-btn {
-		background-color: rosybrown;
-		color: white;
-		border: none;
-	}
+    <style>
+        .custom-btn {
+            background-color: rosybrown;
+            color: white;
+            border: none;
+        }
 
-		.recipe-container {
-			background-color: #ffffff; /* White background */
-			padding: 20px;
-			border-radius: 5px;
-			margin-bottom: 20px;
-			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-			height: 500px; /* Set a fixed height for recipe containers */
-		}
+        .recipe-container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            height: 500px;
+        }
 
-			.recipe-container img {
-				width: 100%;
-				max-height: 200px; /* Set max-height for images to prevent overflow */
-				object-fit: cover; /* Maintain aspect ratio */
-				border-radius: 5px;
-				margin-bottom: 10px;
-			}
+            .recipe-container img {
+                width: 100%;
+                max-height: 200px;
+                object-fit: cover;
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
 
-		.recipe-details {
-			padding: 20px;
-			max-height: 200px; 
-			overflow-y: auto; 
-		}
+        .recipe-details {
+            padding: 20px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
 
-		.recipe-details h3 {
-			color: rosybrown;
-			margin-top: 0;
-		}
+            .recipe-details h3 {
+                color: rosybrown;
+                margin-top: 0;
+            }
 
-		.recipe-details p {
-			color: #333333;
-			margin-bottom: 10px; 
-		}
+            .recipe-details p {
+                color: #333333;
+                margin-bottom: 10px;
+            }
 
-		.steps {
-			max-width: 600px;
-			margin: 0 auto;
-			overflow-wrap: break-word;
-		}
+        .steps,
+        .ingredients {
+            max-width: 600px;
+            margin: 0 auto;
+            overflow-wrap: break-word;
+        }
+    </style>
 
-		.ingredients {
-			max-width: 600px;
-			margin: 0 auto;
-			overflow-wrap: break-word;
-		}
-</style>
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <h1 class="display-4 mb-4">Welcome to</h1>
+            <h1 class="display-4 mb-4">Food For Thought</h1>
+            <img src="https://www.timeoutabudhabi.com/cloud/timeoutabudhabi/2021/09/09/A0EcKhqo-best-dishes-abu-dhabi.jpg" alt="Food For Thought" class="img-fluid rounded">
+        </div>
+    </div>
 
-	<div class="row justify-content-center">
-		<div class="col-md-8 text-center">
-			<h1 class="display-4 mb-4">Welcome to</h1>
-			<h1 class="display-4 mb-4">Food For Thought</h1>
-			<img src="https://www.timeoutabudhabi.com/cloud/timeoutabudhabi/2021/09/09/A0EcKhqo-best-dishes-abu-dhabi.jpg" alt="Food For Thought" class="img-fluid rounded">
-		</div>
-	</div>
-	</div>
-	<div class="container mt-5">
-		<div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
-			@foreach (var recipeItem in Model.Recipes)
-			{
-				<div class="col mb-4">
-					<div class="recipe-container">
-						@if (!string.IsNullOrEmpty(recipeItem.url))
-						{
-							<div class="recipe-image">
-								<img src="@recipeItem.url" alt="Recipe Image" class="img-fluid">
-							</div>
-						}
-						else
-						{
-							<div class="no-image-icon"> </div>
-							// If image is null or invalid, no image is displayed
-						}
-						<div class="recipe-details">
-							@if (!string.IsNullOrEmpty(recipeItem.DishName))
-							{
-								<h3>@recipeItem.DishName</h3>
-							}
-							<p><strong>Rating:</strong> @recipeItem.Rating</p>
-							<div class="ingredients">
-								<p>@recipeItem.Ingredients</p>
-							</div>
-							<p><strong>Steps:</strong></p>
-							<div class="steps">
-								<p>@recipeItem.Steps</p>
-							</div>
-						</div>
-					</div>
-				</div>
-			}
-		</div>
-	</div>
-
-   
-
-	
-	
+    <div class="container mt-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
+            @foreach (var recipeItem in Model.Recipes)
+            {
+                <div class="col mb-4">
+                    <div class="recipe-container">
+                        @if (!string.IsNullOrEmpty(recipeItem.url))
+                        {
+                            <div class="recipe-image">
+                                <img src="@recipeItem.url" alt="Recipe Image" class="img-fluid">
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="no-image-icon"></div>
+                            // If image is null or invalid, no image is displayed
+                        }
+                        <div class="recipe-details">
+                            @if (!string.IsNullOrEmpty(recipeItem.DishName))
+                            {
+                                <h3>@recipeItem.DishName</h3>
+                            }
+                            <p><strong>Rating:</strong> @recipeItem.Rating</p>
+                            <div class="ingredients">
+                                <p>@recipeItem.Ingredients</p>
+                            </div>
+                            <p><strong>Steps:</strong></p>
+                            <div class="steps">
+                                <p>@recipeItem.Steps</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
 </form>
-@* <div class="text-center">
-    <h1 class="display-4"><strong>Welcome to</strong></h1>
-    <h1 class="display-4"><strong>Food For Thought</strong></h1>
-    <img src="https://www.timeoutabudhabi.com/cloud/timeoutabudhabi/2021/09/09/A0EcKhqo-best-dishes-abu-dhabi.jpg" alt="Title" width="1000" style="border: 5px solid rosybrown;">
-
-  
-</div> *@
