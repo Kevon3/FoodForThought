@@ -6,28 +6,29 @@ namespace FoodForThoughtWeb.Model
     {
         public int RecipeId { get; set; }
 
-        [Display(Name = "Name of Dish: ")]
+        [Display(Name = "Name of Dish:")]
         [Required]
         public string DishName { get; set; }
 
         [Required]
-        [Display(Name = "Rating of difficulty: ")]
+        [Display(Name = "Rating of difficulty:")]
         public int Rating { get; set; }
 
         [Required]
-        [Display(Name = "Cuisine: ")]
+        [Display(Name = "Cuisine:")]
         public int CuisineId { get; set; }
 
         [Required]
-        [Display(Name = "Ingredients: ")]
+        [Display(Name = "Ingredients:")]
         public string Ingredients { get; set; }
 
         [Required]
-        [Display(Name = "Steps: ")]
+        [Display(Name = "Steps:")]
         public string Steps { get; set; }
 
-        [Display(Name = "ImageURL: ")]
+        [Display(Name = "ImageURL:")]
         public string? url { get; set; }
     }
 }
+
 
