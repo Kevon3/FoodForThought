@@ -21,6 +21,11 @@ namespace FoodForThoughtWeb.Pages.Account
         {
             if (ModelState.IsValid)
             {
+                if (NewPerson.Username.Length > 20)
+                {
+                    ModelState.AddModelError("RegisterError", "Username is too long. Please enter a shorter username.");
+                    return Page();
+                }
                 if (UsernameExists(NewPerson.Username))
                 {
                     ModelState.AddModelError("RegisterError", "This username exists, please try another one.");
@@ -104,23 +109,4 @@ namespace FoodForThoughtWeb.Pages.Account
         }
     }
 }
-
-
-//string connString = "Server=(localdb)\\MASQLLocalDB;Database=FoodForThought; Trusted_Connection = true;";
-/*SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
-string cmdText = "INSERT INTO Person(Username,FirstName, LastName, Email, Password)" + " VALUES(@username, @firstName, @lastName, @email, @password)";
-SqlCommand cmd = new SqlCommand(cmdText, conn);
-cmd.Parameters.AddWithValue("@username", NewPerson.Username);
-cmd.Parameters.AddWithValue("@firstName", NewPerson.FirstName);
-cmd.Parameters.AddWithValue("@lastName", NewPerson.LastName);
-cmd.Parameters.AddWithValue("@email", NewPerson.Email);
-cmd.Parameters.AddWithValue("@password", SecurityHelper.GeneratePasswordHash(NewPerson.Password));
-
-conn.Open();
-cmd.ExecuteNonQuery();*/
-
-
-//return RedirectToPage("Login");
-
-
 
