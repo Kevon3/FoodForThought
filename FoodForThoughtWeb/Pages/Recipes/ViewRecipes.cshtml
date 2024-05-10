@@ -9,126 +9,136 @@
 </head>
 
 <style>
-	.custom-btn {
-		background-color: rosybrown;
-		color: white;
-		border: none;
-		display: flex;
-		align-items: center; /* Align items vertically */
-		justify-content: center; /* Center items horizontally */
-	}
+    /* CSS Code to Help Format the View Recipe Page */
 
-	.btn-danger{
-		display: flex;
-		align-items: center; /* Align items vertically */
-		justify-content: center; /* Center items horizontally */
-	}
+    /* For the buttons */
+    .custom-btn {
+        background-color: rosybrown;
+        color: white;
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-	.recipe-container {
-		background-color: #ffffff; /* White background */
-		padding: 20px;
-		border-radius: 5px;
-		margin-bottom: 20px;
-		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-		height: 500px; /* Set a fixed height for recipe containers */
-	}
+    /* For the Delete Button */
+    .btn-danger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-		.recipe-container img {
-			width: 100%;
-			max-height: 200px; /* Set max-height for images to prevent overflow */
-			object-fit: cover; /* Maintain aspect ratio */
-			border-radius: 5px;
-			margin-bottom: 10px;
-		}
+    /* For the Container of the Displayed Recipe */
+    .recipe-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height: 500px;
+    }
 
+     /* For the uploaded URL/image to be displayed */
+     .recipe-container img {
+         width: 100%;
+         max-height: 200px;
+         object-fit: cover;
+         border-radius: 5px;
+         margin-bottom: 10px;
+     }
 
-	.recipe-details {
-		padding: 20px;
-		max-height: 200px;
-		overflow-y: auto;
-	}
+     /*For the details section of displayed recipe*/
+    .recipe-details {
+        padding: 20px;
+        max-height: 200px;
+        overflow-y: auto;
+    }
 
-		.recipe-details h3 {
-			color: rosybrown;
-			margin-top: 0;
-		}
+    /*used to style heading of recipes*/
+    .recipe-details h3 {
+        color: rosybrown;
+        margin-top: 0;
+    }
 
-		.recipe-details p {
-			color: #333333;
-			margin-bottom: 10px;
-		}
+    /*styles the paragraphs of details*/
+     .recipe-details p {
+         color: #333333;
+         margin-bottom: 10px;
+     }
 
-	.steps {
-		max-width: 600px; 
-		margin: 0 auto; 
-		overflow-wrap: break-word; 
-	}
-	.ingredients{
-		max-width: 600px;
-		margin: 0 auto;
-		overflow-wrap: break-word;
-	}
+     /*formats the steps section*/
+    .steps {
+        max-width: 600px;
+        margin: 0 auto;
+        overflow-wrap: break-word;
+    }
+
+    /*formats the ingrediants steps*/
+    .ingredients {
+        max-width: 600px;
+        margin: 0 auto;
+        overflow-wrap: break-word;
+    }
 </style>
 
 <form method="post" class="form-group">
-	<div class="row m-2">
-		<div class="col-2">
-			<a asp-page="AddRecipe" class="btn custom-btn">Add Recipe</a>
-		</div>
-	</div>
-	<div class="row m-2">
-		<div class="col-2">
-			<label class="form-label">Cuisine</label>
-		</div>
-		<div class="col-8">
-			<select asp-for="SelectedCuisineId" asp-items="Model.Cuisine"></select>
-		</div>
-		<div class="col-2">
-			<button class="btn custom-btn" id="btnView">Display Recipes</button>
-		</div>
-	</div>
-	<div class="row">
-		@foreach (var recipeItem in Model.Recipes)
-		{
-			<div class="col-lg-4 col-md-6 col-sm-12">
-				<div class="recipe-container">
-					@if (!string.IsNullOrEmpty(recipeItem.url))
-					{
-						<img src="@recipeItem.url" alt="Recipe Image">
-					}
-					else
-					{
-						<div class="no-image-icon"> </div> //if image is null or invalid, no image is displayed
-					}
-					<div class="recipe-details">
-						@if (!string.IsNullOrEmpty(recipeItem.DishName))
-						{
-							<h3>@recipeItem.DishName</h3>
-						}
-						<p><strong>Rating:</strong> @recipeItem.Rating</p>
-						<p><strong>Ingredients:</strong></p>
-						<div class="ingredients">
-							<p>@recipeItem.Ingredients</p>
-						</div>
-						<p><strong>Steps:</strong></p>
-						<div class="steps">
-							<p>@recipeItem.Steps</p>
-						</div>
-						<div class="row justify-content-center">
-							<div class="col-12 d-flex justify-content-between align-items-center">
-								<a asp-page="EditRecipe" asp-route-id="@recipeItem.RecipeId" class="btn custom-btn">
-									<span class="material-symbols-outlined">Edit</span> Edit Recipe
-								</a>
-								<a asp-page="DeleteRecipe" asp-route-id="@recipeItem.RecipeId" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this item? This action cannot be undone!')">
-									<span class="material-symbols-outlined">Delete</span> Delete Recipe
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		}
-	</div>
+    <div class="row m-2">
+        <div class="col-2">
+            <a asp-page="AddRecipe" class="btn custom-btn">Add Recipe</a>
+        </div>
+    </div>
+    <div class="row m-2">
+        <div class="col-2">
+            <label class="form-label">Cuisine</label>
+        </div>
+        <div class="col-8">
+            <select asp-for="SelectedCuisineId" asp-items="Model.Cuisine"></select>
+        </div>
+        <div class="col-2">
+            <button class="btn custom-btn" id="btnView">Display Recipes</button>
+        </div>
+    </div>
+    <div class="row">
+        @foreach (var recipeItem in Model.Recipes)
+        {
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="recipe-container">
+                    @if (!string.IsNullOrEmpty(recipeItem.url))
+                    {
+                        <img src="@recipeItem.url" alt="Recipe Image">
+                    }
+                    else
+                    {
+                        <div class="no-image-icon"></div> 
+                    }
+                    <div class="recipe-details">
+                        @if (!string.IsNullOrEmpty(recipeItem.DishName))
+                        {
+                            <h3>@recipeItem.DishName</h3>
+                        }
+                        <p><strong>Rating:</strong> @recipeItem.Rating</p>
+                        <p><strong>Ingredients:</strong></p>
+                        <div class="ingredients">
+                            <p>@recipeItem.Ingredients</p>
+                        </div>
+                        <p><strong>Steps:</strong></p>
+                        <div class="steps">
+                            <p>@recipeItem.Steps</p>
+                        </div>
+                        <div class="row justify-content-center">
+                            <div class="col-12 d-flex justify-content-between align-items-center">
+                                <a asp-page="EditRecipe" asp-route-id="@recipeItem.RecipeId" class="btn custom-btn">
+                                    <span class="material-symbols-outlined">Edit</span> Edit Recipe
+                                </a>
+                                <a asp-page="DeleteRecipe" asp-route-id="@recipeItem.RecipeId" class="btn btn-danger"
+                                   onclick="return confirm('Are you sure you want to delete this item? This action cannot be undone!')">
+                                    <span class="material-symbols-outlined">Delete</span> Delete Recipe
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </form>
-
-	

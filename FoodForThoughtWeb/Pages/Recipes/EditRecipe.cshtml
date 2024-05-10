@@ -1,41 +1,44 @@
 ﻿@page
 @model FoodForThoughtWeb.Pages.Recipes.EditRecipeModel
 @{
-	Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
+    Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
 }
 
 <style>
+    /*format buttons*/
     .custom-btn {
         background-color: rosybrown;
         color: white;
         border: none;
     }
 
+    /*format recipe containers*/
     .form-container {
         width: 570px;
-        margin: 0 auto; /* Center the form horizontally */
+        margin: 0 auto; 
         padding: 20px;
-        background-color: #f8f9fa; /* Light gray background */
+        background-color: #f8f9fa; 
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     }
 
+    /*title formatting*/
     .form-title {
         text-align: center;
     }
 
-    /* Style for form labels */
+    /*label formatting*/
     .form-label {
         font-weight: bold;
         margin-bottom: 0px;
-        margin-right: 0px; /* Add margin to the right side */
+        margin-right: 0px; 
         color: rosybrown;
     }
 
-    /* Style for form inputs */
+    /*format text elements throughout*/
     .form-control {
         border-radius: 5px;
-        border: 1px solid #ced4da; /* Gray border */
+        border: 1px solid #ced4da; 
         padding: 8px;
         width: 95%;
         box-sizing: border-box;
@@ -103,27 +106,92 @@
         </div>
     </div>
 </form>
+
 <script>
+    //for the url to work
     document.addEventListener('DOMContentLoaded', function () {
-        // Get references to the URL input field and the image element
         const imageUrlInput = document.getElementById('imageUrlInput');
         const recipeImage = document.getElementById('recipeImage');
 
-        // Add event listener to listen for changes in the URL input field
         imageUrlInput.addEventListener('input', function () {
-            // Get the value of the URL input field
+            
             const imageUrl = imageUrlInput.value.trim();
 
-            // Update the src attribute of the image element with the URL value
+            
             if (imageUrl) {
                 recipeImage.src = imageUrl;
-                recipeImage.style.display = 'block'; // Show the image
+                recipeImage.style.display = 'block'; 
             } else {
-                recipeImage.src = ''; // Clear the image source
-                recipeImage.style.display = 'none'; // Hide the image
+                recipeImage.src = ''; 
+                recipeImage.style.display = 'none'; 
             }
         });
     });
 </script>
-
-
+@* <style>
+	.custom-btn {
+		background-color: rosybrown;
+		color: white;
+		border: none;
+	}
+</style>
+<form method="post" class=" form-group">
+	<div class="row m-2">
+		<div class="col-2">
+			<h3>Edit Recipe</h3>
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="Item.DishName"></label>
+		</div>
+		<div class="col-10">
+			<input type="text" class="form-control" asp-for="Item.DishName" />
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="Item.Rating"></label>
+		</div>
+		<div class="col-10">
+			<input type="number" class="form-control" asp-for="Item.Rating" />
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="Item.Ingredients"></label>
+		</div>
+		<div class="col-10">
+			<input type="text" class="form-control" asp-for="Item.Ingredients" />
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="Item.Steps"></label>
+		</div>
+		<div class="col-10">
+			<input type="text" class="form-control" asp-for="Item.Steps" />
+		</div>
+	</div>
+	<div class="row m-2">
+		<div class="col-2">
+			<label asp-for="Item.CuisineId"></label>
+		</div>
+		<div class="col-10">
+			<select asp-for="Item.CuisineId" asp-items="@Model.Cuisine"></select>
+		</div>
+	</div>
+	
+	<div class="row m-2">
+		<div class="col-2">
+			<button id="btnAdd" class="btn custom-btn">Update!</button>
+		</div>
+</form> *@
+@* <div class="row m-2">
+	<div class="col-2">
+	<label asp-for="Item.IngredientId"></label>
+	</div>
+	<div class="col-10">
+	<input type="text" class="form-control" asp-for="Item.IngredientId" />
+	</div>
+	</div> *@
