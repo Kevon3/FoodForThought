@@ -1,0 +1,102 @@
+﻿@page
+@model FoodForThoughtWeb.Pages.Account.EditProfileModel
+@{
+    Layout = HttpContext.User.Identity.IsAuthenticated ? "_LayoutAuthenticated" : "_Layout";
+}
+<style>
+    .custom-btn {
+        background-color: rosybrown;
+        color: white;
+        border: none;
+    }
+
+    .form-container {
+        width: 570px;
+        margin: 0 auto; /* Center the form horizontally */
+        padding: 20px;
+        background-color: #f8f9fa; /* Light gray background */
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+        text-align: center;
+    }
+
+    /* Style for form labels */
+    .form-label {
+        font-weight: bold;
+        margin-bottom: 0px;
+        margin-right: 0px; /* Add margin to the right side */
+        color: rosybrown;
+    }
+
+    /* Style for form inputs */
+    .form-control {
+        border-radius: 5px;
+        border: 1px solid #ced4da; /* Gray border */
+        padding: 8px;
+        width: 95%;
+        box-sizing: border-box;
+        margin-left: 10px;
+        .text-danger
+
+    {
+        color: red;
+    }
+
+    }
+</style>
+<form method="post" class="form-group form-container">
+    <div class="row m-2 text-danger" asp-validation-summary="All"></div>
+    <div class="profile-container">
+        <div class="row m-2">
+            <div class="col-2">
+                <span class="profile-label">Username:</span>
+            </div>
+            <div class="col-10">
+                <input type="text" class="form-control" asp-for="profile.Username" />
+            </div>
+        </div>
+
+        <div class="row m-2">
+            <div class="col-2">
+                <span class="profile-label">First Name:</span>
+            </div>
+            <div class="col-10">
+                <input type="text" class="form-control" asp-for="profile.FirstName" />
+            </div>
+        </div>
+
+        <div class="row m-2">
+            <div class="col-2">
+                <span class="profile-label">Last Name:</span>
+            </div>
+            <div class="col-10">
+                <input type="text" class="form-control" asp-for="profile.LastName" />
+            </div>
+        </div>
+
+        <div class="row m-2">
+            <div class="col-2">
+                <span class="profile-label">Email:</span>
+            </div>
+            <div class="col-10">
+                <input type="text" class="form-control" asp-for="profile.Email" />
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="col-2">
+                <span class="profile-label">Password:</span>
+            </div>
+            <div class="col-10">
+                <input type="password" class="form-control" asp-for="profile.Password" />
+            </div>
+        </div>
+        <div class="row m-2">
+            <div class="col-12">
+                <button id="btnAdd" class="btn custom-btn btn-block">Update!</button>
+            </div>
+        </div>
+    </div>
+</form>
