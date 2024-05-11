@@ -36,7 +36,6 @@ namespace FoodForThoughtWeb.Pages.Account
                     profile.LastName = reader.GetString(1);
                     profile.Email = email;
                     profile.Username = reader.GetString(3);
-                    //profile.Password = reader.GetString(3);
 
                 }
             }

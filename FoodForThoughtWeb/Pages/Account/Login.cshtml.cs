@@ -32,9 +32,7 @@ namespace FoodForThoughtWeb.Pages.Account
                     ModelState.AddModelError("LoginError", "Invalid credentials. Try again.");
 
                 }
-                //conn.Close();
                 return Page();
-                //return RedirectToPage("Profile");
 
             }
             else
@@ -107,26 +105,3 @@ namespace FoodForThoughtWeb.Pages.Account
 
 }
 
-/*SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString());
-                String cmdText = "SELECT Password FROM Person WHERE Email=@email;";
-                SqlCommand cmd = new SqlCommand(cmdText, conn);
-                cmd.Parameters.AddWithValue("@email", LoginUser.Email);
-                conn.Open();
-                SqlDataReader reader = cmd.ExecuteReader();
-                if (reader.HasRows)
-                {
-                    reader.Read();
-                    if (!reader.IsDBNull(0))
-                    {
-                        string passwordHash = reader.GetString(0);
-                        if (SecurityHelper.VerifyPassword(LoginUser.Password, passwordHash))
-                        {
-                            return RedirectToPage("Profile");
-                        }
-                        else
-                        {
-                            ModelState.AddModelError("LoginError", "Invalid credentials. Try again.");
-                            return Page();
-                        }
-                    }
-                }*/
