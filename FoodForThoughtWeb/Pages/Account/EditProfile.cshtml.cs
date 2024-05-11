@@ -26,27 +26,12 @@ namespace FoodForThoughtWeb.Pages.Account
         {
             if (ModelState.IsValid)
             {
-                if (profile.Username.Length > 20)
-                {
-                    ModelState.AddModelError("RegisterError", "Username is too long. Please enter a shorter username.");
-                    return Page();
-                }
-                if (UsernameExists(profile.Username))
-                {
-                    ModelState.AddModelError("RegisterError", "This username exists, please try another one.");
-                    return Page();
-                }
-                if (EmailDoesExist(profile.Email))
-                {
-                     ModelState.AddModelError("RegisterError", "This email already exists. Try a different one.");
-                }
-                
                 string email = HttpContext.User.FindFirstValue(ClaimTypes.Email);
                 using (SqlConnection conn = new SqlConnection(SecurityHelper.GetDBConnectionString()))
                 {
-                    string cmdText = "UPDATE Person SET Username = @username, FirstName = @firstName, LastName = @lastName, Email = @email, Password = @password WHERE Email = @email";
+                    string cmdText = "UPDATE Person SET Username = @username, FirstName = @firstName, LastName = @lastName, Email = @email, Password = @password WHERE UserId = @userId";
                     SqlCommand cmd = new SqlCommand(cmdText, conn);
-                    // cmd.Parameters.AddWithValue("@itemId", id);
+                    cmd.Parameters.AddWithValue("@userId", profile.UserId);
                     cmd.Parameters.AddWithValue("@username", profile.Username);
                     cmd.Parameters.AddWithValue("@firstName", profile.FirstName);
                     cmd.Parameters.AddWithValue("@lastName", profile.LastName);
